@@ -1,0 +1,4 @@
+{
+  "extends": "airbnb",
+  "ignorePatterns": ["node_modules/", "app/**/*.test.js"]
+}

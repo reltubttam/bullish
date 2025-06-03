@@ -1,0 +1,32 @@
+{
+  "name": "bullish",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/reltubttam/bullish#readme",
+  "bugs": {
+    "url": "https://github.com/reltubttam/bullish/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reltubttam/bullish.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:lint",
+    "test:lint": "eslint .",
+    "test:unit": "mocha app/**/*.test.js"
+  },
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "mocha": "^11.5.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ws": "^8.18.2"
+  }
+}
