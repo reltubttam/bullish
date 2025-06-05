@@ -16,7 +16,7 @@ const { getFullMinuteOfTrade } = proxyquire('./minute-api', {
   '../lib/logger': MOCK_LOGGER,
 });
 
-describe('getFullMinuteOfTrade', () => {
+describe('minuteApi.getFullMinuteOfTrade', () => {
   const realFetch = fetch;
   const API_RESPONSE = {
     Data: {

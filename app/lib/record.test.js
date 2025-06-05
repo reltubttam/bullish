@@ -23,7 +23,7 @@ const {
   '../lib/logger': MOCK_LOGGER,
 });
 
-describe('increaseStreamVolume', () => {
+describe('record.increaseStreamVolume', () => {
   afterEach(() => {
     clearVolumeData();
     sandbox.reset();
@@ -57,7 +57,7 @@ describe('increaseStreamVolume', () => {
   });
 });
 
-describe('getStreamVolume', () => {
+describe('record.getStreamVolume', () => {
   afterEach(() => {
     clearVolumeData();
     sandbox.reset();
@@ -73,7 +73,7 @@ describe('getStreamVolume', () => {
   });
 });
 
-describe('setAPIVolume', () => {
+describe('record.setAPIVolume', () => {
   afterEach(() => {
     clearVolumeData();
     sandbox.reset();
@@ -106,7 +106,7 @@ describe('setAPIVolume', () => {
   });
 });
 
-describe('logVolumeData', () => {
+describe('record.logVolumeData', () => {
   afterEach(() => {
     clearVolumeData();
     sandbox.reset();

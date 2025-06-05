@@ -23,7 +23,7 @@ const Streamer = proxyquire('./streaming', {
   ws: MOCK_WS_CLASS,
 });
 
-describe('init', () => {
+describe('Streamer.init', () => {
   afterEach(() => {
     sandbox.reset();
   });
@@ -93,7 +93,7 @@ describe('init', () => {
   });
 });
 
-describe('subscribe', () => {
+describe('Streamer.subscribe', () => {
   afterEach(() => {
     sandbox.reset();
   });
@@ -113,7 +113,8 @@ describe('subscribe', () => {
       toSymbol: 'TO_SYMBOL',
     };
     const SUBSCRIPTION_HANDLER = sandbox.fake();
-    streamer.subscribe(DETAILS, SUBSCRIPTION_HANDLER);
+    MOCK_WS.send = sandbox.fake((data, cb) => cb());
+    await streamer.subscribe(DETAILS, SUBSCRIPTION_HANDLER);
 
     const messageHandler = MOCK_WS.on.getCalls()[0].args[1];
     const MESSAGE = {
@@ -159,7 +160,8 @@ describe('subscribe', () => {
       toSymbol: 'OTHER_TO_SYMBOL',
     };
     const SUBSCRIPTION_HANDLER = sandbox.fake();
-    streamer.subscribe(DETAILS, SUBSCRIPTION_HANDLER);
+    MOCK_WS.send = sandbox.fake((data, cb) => cb());
+    await streamer.subscribe(DETAILS, SUBSCRIPTION_HANDLER);
 
     const messageHandler = MOCK_WS.on.getCalls()[0].args[1];
     const MESSAGE = {
@@ -181,7 +183,7 @@ describe('subscribe', () => {
   });
 });
 
-describe('close', () => {
+describe('Streamer.close', () => {
   afterEach(() => {
     sandbox.reset();
   });
