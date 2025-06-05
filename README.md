@@ -32,7 +32,7 @@ npm run test
 this will run through the following in order, proceeding to the next only on a pass
 1. mocha unit tests
 2. lnting based on the airbnb style guide 
-3. npm vulnerability audit
+3. npm vulnerability audit for critical issues
 
 ```
 npm run test:lint -- --fix
