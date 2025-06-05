@@ -16,7 +16,10 @@ async function init() {
 
   ws.on('message', (data) => {
     const payload = JSON.parse(data.toString());
-    logger.debug('streaming payload:', payload);
+    logger.debug('streaming payload:', {
+      exchangeTimeStamp: payload.TS,
+      data: JSON.stringify(payload),
+    });
     const parsedPayload = {
       type: payload.TYPE,
       exchange: payload.M,
@@ -27,7 +30,7 @@ async function init() {
       recievedTimeStamp: payload.RTS,
 
       price: payload.P,
-      quantity: payload.Q,
+      volume: payload.Q,
       total: payload.TOTAL,
     };
     const sub = detailsToSub(parsedPayload);

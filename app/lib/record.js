@@ -4,42 +4,42 @@ let volumeData = {};
 
 function increaseStreamVolume(unixTimeStamp, volume) {
   if (volumeData[unixTimeStamp]) {
-    volumeData[unixTimeStamp].streamTotalQuantity += volume;
+    volumeData[unixTimeStamp].streamTotalVolume += volume;
   } else {
     volumeData[unixTimeStamp] = {
-      streamTotalQuantity: volume,
+      streamTotalVolume: volume,
     };
   }
-  return volumeData[unixTimeStamp].streamTotalQuantity;
+  return volumeData[unixTimeStamp].streamTotalVolume;
 }
 
 function getStreamVolume(unixTimeStamp) {
-  return volumeData?.[unixTimeStamp]?.streamTotalQuantity;
+  return volumeData?.[unixTimeStamp]?.streamTotalVolume;
 }
 
 function setAPIVolume(unixTimeStamp, volume) {
   if (!volumeData[unixTimeStamp]) {
     volumeData[unixTimeStamp] = {
-      streamTotalQuantity: 0,
+      streamTotalVolume: 0,
     };
   }
-  volumeData[unixTimeStamp].apiTotalQuantity = volume;
+  volumeData[unixTimeStamp].apiTotalVolume = volume;
 }
 
 function getAPIVolume(unixTimeStamp) {
-  return volumeData?.[unixTimeStamp]?.apiTotalQuantity || 0;
+  return volumeData?.[unixTimeStamp]?.apiTotalVolume || 0;
 }
 
 function logVolumeData(unixTimeStamp) {
   const record = volumeData[unixTimeStamp] || {};
-  const difference = (record.streamTotalQuantity || 0) - (record.apiTotalQuantity || 0);
-  const percentDifference = `${((difference / (record.apiTotalQuantity || 1)) * 100).toFixed(2)}%`;
+  const difference = (record.streamTotalVolume || 0) - (record.apiTotalVolume || 0);
+  const percentDifference = `${((difference / (record.apiTotalVolume || 1)) * 100).toFixed(2)}%`;
   logger.info('full minute completed', {
     minuteTimeStamp: unixTimeStamp,
     humanReadableTime: new Date(unixTimeStamp * 1000).toISOString(),
 
-    streamTotalQuantity: record.streamTotalQuantity || 0,
-    apiTotalQuantity: record.apiTotalQuantity || 0,
+    streamTotalVolume: record.streamTotalVolume || 0,
+    apiTotalVolume: record.apiTotalVolume || 0,
     difference,
     percentDifference,
   });

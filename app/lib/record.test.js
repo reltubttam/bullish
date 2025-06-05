@@ -128,8 +128,8 @@ describe('logVolumeData', () => {
       {
         minuteTimeStamp: UNIX_TIME_STAMP,
         humanReadableTime: new Date(UNIX_TIME_STAMP * 1000).toISOString(),
-        streamTotalQuantity: STREAM_VOLUME,
-        apiTotalQuantity: API_VOLUME,
+        streamTotalVolume: STREAM_VOLUME,
+        apiTotalVolume: API_VOLUME,
         difference: STREAM_VOLUME - API_VOLUME,
         percentDifference: '10.00%',
       },

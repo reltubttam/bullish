@@ -62,7 +62,7 @@ describe('init', () => {
     };
     messageHandler({ toString: () => JSON.stringify(MESSAGE) });
     expect(MOCK_LOGGER.debug.getCalls().map(({ args }) => args)).to.deep.equal([[
-      'streaming payload:', MESSAGE,
+      'streaming payload:', { data: JSON.stringify(MESSAGE), exchangeTimeStamp: MESSAGE.TS },
     ]]);
   });
   it('should reject on open errors', async () => {
@@ -129,7 +129,7 @@ describe('subscribe', () => {
     };
     messageHandler({ toString: () => JSON.stringify(MESSAGE) });
     expect(MOCK_LOGGER.debug.getCalls().map(({ args }) => args)).to.deep.equal([[
-      'streaming payload:', MESSAGE,
+      'streaming payload:', { data: JSON.stringify(MESSAGE), exchangeTimeStamp: MESSAGE.TS },
     ]]);
     expect(SUBSCRIPTION_HANDLER.getCalls().map(({ args }) => args)).to.deep.equal([[{
       type: MESSAGE.TYPE,
@@ -139,7 +139,7 @@ describe('subscribe', () => {
       exchangeTimeStamp: MESSAGE.TS,
       recievedTimeStamp: MESSAGE.RTS,
       price: MESSAGE.P,
-      quantity: MESSAGE.Q,
+      volume: MESSAGE.Q,
       total: MESSAGE.TOTAL,
     }]]);
   });
@@ -175,7 +175,7 @@ describe('subscribe', () => {
     };
     messageHandler({ toString: () => JSON.stringify(MESSAGE) });
     expect(MOCK_LOGGER.debug.getCalls().map(({ args }) => args)).to.deep.equal([[
-      'streaming payload:', MESSAGE,
+      'streaming payload:', { data: JSON.stringify(MESSAGE), exchangeTimeStamp: MESSAGE.TS },
     ]]);
     expect(SUBSCRIPTION_HANDLER.getCalls().map(({ args }) => args)).to.deep.equal([]);
   });

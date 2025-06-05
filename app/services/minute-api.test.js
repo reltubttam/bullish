@@ -52,7 +52,7 @@ describe('getFullMinuteOfTrade', () => {
     expect(
       MOCK_LOGGER.debug.getCalls().map(({ args }) => args),
     ).to.deep.equal(
-      [[{ data: JSON.stringify(API_RESPONSE), unixTimeStamp: UNIX_TIME_STAMP }]],
+      [['minute api payload:', { data: JSON.stringify(API_RESPONSE), toTimeStamp: UNIX_TIME_STAMP }]],
     );
     expect(fetch.getCalls().map(({ args }) => args)).to.deep.equal([[
       `${MOCK_CONFIG.MIN_API_BASE_URL}/histominute?fsym=${FROM_SYMBOL}&tsym=${TO_SYMBOL}&e=${EXCHANGE}&limit=1&extraParams=streamApiCompare&toTs=${UNIX_TIME_STAMP}`,
