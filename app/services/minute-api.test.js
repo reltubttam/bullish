@@ -2,12 +2,13 @@ const proxyquire = require('proxyquire');
 const { expect } = require('chai');
 const sinon = require('sinon');
 
+const sandbox = sinon.createSandbox();
 const MOCK_CONFIG = {
   API_KEY: 'API_KEY',
   MIN_API_BASE_URL: 'MIN_API_BASE_URL',
 };
 const MOCK_LOGGER = {
-  debug: sinon.fake(),
+  debug: sandbox.fake(),
 };
 
 const { getFullMinuteOfTrade } = proxyquire('./minute-api', {
@@ -27,17 +28,17 @@ describe('getFullMinuteOfTrade', () => {
   const MOCK_FETCH_RESPONSE = {
     status: 200,
     ok: true,
-    json: sinon.fake.resolves(API_RESPONSE),
+    json: sandbox.fake.resolves(API_RESPONSE),
   };
 
   beforeEach(() => {
-    fetch = sinon.fake.resolves(MOCK_FETCH_RESPONSE);
-    MOCK_FETCH_RESPONSE.json = sinon.fake.resolves(API_RESPONSE);
+    fetch = sandbox.fake.resolves(MOCK_FETCH_RESPONSE);
+    MOCK_FETCH_RESPONSE.json = sandbox.fake.resolves(API_RESPONSE);
   });
 
   afterEach(() => {
     fetch = realFetch;
-    sinon.restore();
+    sandbox.reset();
   });
 
   it('should make a call using fetch', async () => {
