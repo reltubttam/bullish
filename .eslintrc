@@ -1,4 +1,25 @@
 {
   "extends": "airbnb",
-  "ignorePatterns": ["node_modules/", "app/**/*.test.js"]
+  "ignorePatterns": [
+    "node_modules/"
+  ],
+  "parserOptions":{
+    "ecmaVersion": 2022
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.js"
+      ],
+      "env": {
+        "mocha": true
+      },
+      "plugins": [
+        "mocha"
+      ],
+      "rules": {
+        "no-global-assign":"off"
+      }
+    }
+  ]
 }
