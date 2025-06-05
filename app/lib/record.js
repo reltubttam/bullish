@@ -1,5 +1,7 @@
 const logger = require('./logger');
 
+// stores aggregated data keyed by the unix timestamp of the minute
+// currently each record holds properties streamTotalVolume & apiTotalVolume
 let volumeData = {};
 
 function increaseStreamVolume(unixTimeStamp, volume) {
@@ -45,8 +47,10 @@ function logVolumeData(unixTimeStamp) {
   });
 }
 
-// for testing purposes
-function clearVolumeData() {
+function clearVolumeData(unixTimeStamp) {
+  if (unixTimeStamp) {
+    delete volumeData[unixTimeStamp];
+  }
   volumeData = {};
 }
 

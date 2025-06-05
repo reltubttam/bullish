@@ -17,7 +17,7 @@ async function getFullMinuteOfTrade(
     exchange
   }&toTs=${
     toTimeStamp
-  }&limit=1&extraParams=streamApiCompare`, {
+  }&limit=1&extraParams=streamApiCompare`, { // extraParams holds the application name
     headers: {
       api_key: API_KEY,
     },

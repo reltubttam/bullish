@@ -57,6 +57,7 @@ async function init() {
     });
   }
 
+  // remove all subscriptions before closing the connection
   async function close() {
     const request = {
       action: 'SubRemove',

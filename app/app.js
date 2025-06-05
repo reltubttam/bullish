@@ -6,6 +6,7 @@ const {
   getStreamVolume,
   setAPIVolume,
   logVolumeData,
+  clearVolumeData,
 } = require('./lib/record');
 
 const MINUTE_IN_SECONDS = 60;
@@ -40,6 +41,7 @@ async function start() {
 
       setAPIVolume(previousRoundedUpTime, fullMinuteData.volumefrom);
       logVolumeData(previousRoundedUpTime);
+      clearVolumeData(previousRoundedUpTime - MINUTE_IN_SECONDS);
     }
   });
   logger.info('app started');

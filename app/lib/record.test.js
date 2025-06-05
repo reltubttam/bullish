@@ -39,18 +39,15 @@ describe('record.increaseStreamVolume', () => {
     const UNIX_TIME_STAMP = 1234567890;
     const FRST_VOLUME = 10;
     const SECOND_VOLUME = 20;
-
     const UNIX_TIME_STAMP_AFTER_MINUTE = UNIX_TIME_STAMP + 60;
     const VOLUME_AFTER_MINUTE = 40;
 
     expect(
       increaseStreamVolume(UNIX_TIME_STAMP, FRST_VOLUME),
     ).to.equal(FRST_VOLUME);
-
     expect(
       increaseStreamVolume(UNIX_TIME_STAMP, SECOND_VOLUME),
     ).to.equal(FRST_VOLUME + SECOND_VOLUME);
-
     expect(
       increaseStreamVolume(UNIX_TIME_STAMP_AFTER_MINUTE, VOLUME_AFTER_MINUTE),
     ).to.equal(VOLUME_AFTER_MINUTE);
@@ -82,7 +79,6 @@ describe('record.setAPIVolume', () => {
     const UNIX_TIME_STAMP = 1234567890;
     const FRST_VOLUME = 10;
     const SECOND_VOLUME = 20;
-
     const UNIX_TIME_STAMP_AFTER_MINUTE = UNIX_TIME_STAMP + 60;
     const VOLUME_AFTER_MINUTE = 40;
 
@@ -90,12 +86,10 @@ describe('record.setAPIVolume', () => {
     expect(
       getAPIVolume(UNIX_TIME_STAMP),
     ).to.equal(FRST_VOLUME);
-
     setAPIVolume(UNIX_TIME_STAMP, SECOND_VOLUME);
     expect(
       getAPIVolume(UNIX_TIME_STAMP),
     ).to.equal(SECOND_VOLUME);
-
     setAPIVolume(UNIX_TIME_STAMP_AFTER_MINUTE, VOLUME_AFTER_MINUTE);
     expect(
       getAPIVolume(UNIX_TIME_STAMP_AFTER_MINUTE),
@@ -118,7 +112,6 @@ describe('record.logVolumeData', () => {
 
     increaseStreamVolume(UNIX_TIME_STAMP, STREAM_VOLUME);
     setAPIVolume(UNIX_TIME_STAMP, API_VOLUME);
-
     logVolumeData(UNIX_TIME_STAMP);
 
     expect(

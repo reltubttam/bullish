@@ -2,7 +2,7 @@
 this application collects trade data from the CoinDesk streaming service, then after each full minute since the epoch completes, compares this to the historical minute API end point.  Specifically we are concerned with trades for the pair BTC-USD for the exchange Coinbase.  The application has been built using NodeJS without typescript using mocha for testing.
 
 ## running the application
-a `.env` file is required. The file `.env.example` can be copied, have a valid api key added to it and renamed for this purpose.  The following env vars are defined:
+a `.env` file is required. The file `.env.example` can have a valid api key added to it and renamed for this purpose.  The following env vars are defined:
 - `API_KEY` required for valid calls
 - `LOG_LEVEL` *INFO* or *DEBUG* controls if extra data is written to the console
 - `STREAMING_BASE_URL` location of the streaming service
@@ -41,6 +41,6 @@ this will resolve simple linting issues
 
 ## future developments
 given more time I would have improved the following:
-- better handling of historical data. E.g. if it is necessary to ammend a record after the minute elapses or if we have reason to replay the minute api call 
+- better handling and storage of historical data. E.g. if it is necessary to ammend a record after the minute elapses or if we have reason to replay the minute api call 
 - improved error handling, e.g. we may be able to reconnect to the websocket or retry an http call
-- allow better configuration of which trades are of interest 
+- allow better configuration of which trades are of interest and allow multiple subscriptions
