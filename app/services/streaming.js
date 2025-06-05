@@ -20,6 +20,7 @@ async function init() {
       exchangeTimeStamp: payload.TS,
       data: JSON.stringify(payload),
     });
+    // This is not an exhaustive list of types
     const parsedPayload = {
       type: payload.TYPE,
       exchange: payload.M,

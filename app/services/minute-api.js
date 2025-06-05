@@ -15,9 +15,9 @@ async function getFullMinuteOfTrade(
     toSymbol
   }&e=${
     exchange
-  }&limit=1&extraParams=streamApiCompare&toTs=${
+  }&toTs=${
     toTimeStamp
-  }`, {
+  }&limit=1&extraParams=streamApiCompare`, {
     headers: {
       api_key: API_KEY,
     },

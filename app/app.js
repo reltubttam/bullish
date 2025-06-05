@@ -30,15 +30,16 @@ async function start() {
     // if the current minute is starting AND the app has more than 1 minute with some data
     // we now can handle the completed minute
     if (totalVolme === payload.volume && getStreamVolume(roundedUpTime - 2 * MINUTE_IN_SECONDS)) {
+      const previousRoundedUpTime = roundedUpTime - MINUTE_IN_SECONDS;
       const fullMinuteData = await getFullMinuteOfTrade(
-        roundedUpTime - MINUTE_IN_SECONDS,
+        previousRoundedUpTime,
         payload.exchange,
         payload.fromSymbol,
         payload.toSymbol,
       );
 
-      setAPIVolume(roundedUpTime - MINUTE_IN_SECONDS, fullMinuteData.volumefrom);
-      logVolumeData(roundedUpTime - MINUTE_IN_SECONDS);
+      setAPIVolume(previousRoundedUpTime, fullMinuteData.volumefrom);
+      logVolumeData(previousRoundedUpTime);
     }
   });
   logger.info('app started');
